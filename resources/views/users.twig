@@ -1,4 +1,14 @@
 {% block title %} Users {% endblock %}
 {% extends 'layouts/layout.twig' %}
 
-{% block content %} Users {% endblock %}
+{% block content %} 
+
+   <h1> {{ user }} </h1>
+
+   <ul class="list-group">
+    {% for color in colors %}
+     <li class="list-group-item"> {{ color }} </li>
+     {% endfor %}  
+   </ul>
+
+{% endblock %}

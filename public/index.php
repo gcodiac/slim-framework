@@ -31,10 +31,20 @@ $container['view'] = function ($container) {
 $app->get('/', function($request, $response){
     return $this->view->render($response, 'home.twig');
     // return 'Bismillah';
-});
+})->setName('home');
+
 $app->get('/users', function($request, $response){
-    return $this->view->render($response, 'users.twig');
+    $colors = [
+        '1'=> 'Red',   
+        '2'=> 'Green',   
+        '3'=> 'Yellow',   
+        '4'=> 'Pink',   
+    ];
+    return $this->view->render($response, 'users.twig',[
+        'user'=> 'Ali',
+        'colors' => $colors,
+    ]);
     // return 'Bismillah';
-});
+})->setName('users.index');
 
 $app->run();
