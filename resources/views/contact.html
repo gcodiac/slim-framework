@@ -1,0 +1,40 @@
+{% block title %} Contact {% endblock %}
+{% extends 'layouts/layout.twig' %}
+
+{% block content %} 
+
+   <h1> Contact Us </h1>
+   <div class="container">
+
+         <div class="card col-8 offset-2">
+            <div class="card-header"> Contact Us Form</div>
+            <div class="card-body">
+               <p class="card-text">Please Fill in the form</p>
+               <form action="{{ path_for('contact') }}" method="post">
+                  <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text"
+                     class="form-control" name="name" id="name" aria-describedby="name" placeholder="Enter your name">
+                  <small id="name_error" class="form-text text-muted">Enter Valid Name</small>
+                  </div>
+
+                  <div class="mb-3">
+                     <label for="email" class="form-label">Email</label>
+                     <input type="text"
+                     class="form-control" name="email" id="email" aria-describedby="email" placeholder="Enter your Email">
+                     <small id="email_error" class="form-text text-muted">Enter Valid Email</small>
+                  </div>   
+                  <div class="mb-3">
+                     <label for="message" class="form-label">Message</label>
+                     <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+                  </div>  
+                  
+                  <input class="btn btn-primary w-100" type="submit" value="Submit">
+               </form>
+            </div>
+         </div>
+
+   </div>
+
+
+{% endblock %}

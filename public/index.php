@@ -1,4 +1,7 @@
 <?php
+
+use Slim\Http\Request;
+
 require '../vendor/autoload.php';
 $config['displayErrorDetails'] = true;
 // $config['addContentLengthHeader'] = false;
@@ -33,18 +36,23 @@ $app->get('/', function($request, $response){
     // return 'Bismillah';
 })->setName('home');
 
-$app->get('/users', function($request, $response){
-    $colors = [
-        '1'=> 'Red',   
-        '2'=> 'Green',   
-        '3'=> 'Yellow',   
-        '4'=> 'Pink',   
-    ];
-    return $this->view->render($response, 'users.twig',[
-        'user'=> 'Ali',
-        'colors' => $colors,
-    ]);
-    // return 'Bismillah';
-})->setName('users.index');
+
+$app->get('/contact', function($request, $response){
+    $this->view->render($response, 'contact.html');
+});
+
+$app->post('/contact', function($request, $response){
+    // return $this->render($request, 'contact');
+    //catch and display the POST params
+    echo $_POST['name'];
+    // or
+    echo $request->getParam('name');
+    //or
+    echo '<pre>';
+    var_dump($request->getParams());
+    echo '</pre>';
+
+    die('Contact');
+})->setName('contact');
 
 $app->run();
